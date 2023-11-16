@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Formulario Date</h2>
+
+    <form id="dateForm">
+        <label for="date1">Data 1</label>
+        <input type="text" id="date1" name="date1" readonly>
+
+        <!-- Ripeti questi blocchi per le altre date -->
+
+        <button type="button" onclick="submitForm()">Invia</button>
+    </form>
+
+    <script>
+        var maxResponses = 5;
+        var responses = { date1: 0, date2: 0, date3: 0, date4: 0, date5: 0 };
+
+        function submitForm() {
+            var selectedDate = document.getElementById('date1').value;
+
+            // Verifica se ci sono ancora posti disponibili per la data selezionata
+            if (responses[selectedDate] < maxResponses) {
+                alert('Grazie per aver risposto!');
+                responses[selectedDate]++;
+                document.getElementById('date1').readOnly = true; // Blocca la data dopo la risposta
+            } else {
+                alert('Spiacenti, i posti per questa data sono esauriti.');
+            }
+        }
+    </script>
+
+</body>
+</html>
